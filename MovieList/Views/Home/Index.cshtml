@@ -1,0 +1,36 @@
+﻿
+
+<div class="mb-2">
+    <a asp-controller="Movie" asp-action="Add">Add New Movie</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.title</td>
+                <td>@movie.year</td>
+                <td>@movie.Genre.name</td>
+                <td>@movie.rating</td>
+                <td>
+                    <a asp-controller="Movie" asp-action="Edit"
+                       asp-route-id="@movie.movieId"
+                       asp-route-slug="@movie.Slug">Edit</a>
+                    <a asp-controller="Movie" asp-action="Delete"
+                       asp-route-id="@movie.movieId"
+                       asp-route-slug="@movie.Slug">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
